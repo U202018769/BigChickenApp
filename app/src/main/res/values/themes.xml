@@ -20,7 +20,13 @@
     <style name="SplashTheme" parent="Theme.BigChickenApp">
 
 
+
         <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
+    <style name="NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
 </resources>
