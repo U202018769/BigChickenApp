@@ -1,6 +1,5 @@
 package com.grupo.bigchickenapp.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
@@ -34,9 +33,10 @@ class RegisterActivity : BaseActivity() {
 
         val tvlogin = findViewById<MSPTextViewBold>(R.id.tv_login)
         tvlogin.setOnClickListener{
-            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-            startActivity(intent)
+            //val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+            //startActivity(intent)
             //finish()
+            onBackPressed()
        }
 
         btn_register.setOnClickListener {
@@ -110,6 +110,8 @@ class RegisterActivity : BaseActivity() {
 
         if (validateRegisterDetails()) {
 
+            showProgressDialog(resources.getString(R.string.please_wait))
+
             val email: String = et_email.text.toString().trim { it <= ' ' }
             val password: String = et_password.text.toString().trim { it <= ' ' }
 
@@ -117,6 +119,8 @@ class RegisterActivity : BaseActivity() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                     OnCompleteListener<AuthResult> { task ->
+
+                        hideProgressDialog()
 
                         // If the registration is successfully done
                         if (task.isSuccessful) {
@@ -128,6 +132,9 @@ class RegisterActivity : BaseActivity() {
                                 "You are registered successfully. Your user id is ${firebaseUser.uid}",
                                 false
                             )
+                            FirebaseAuth.getInstance().signOut()
+                            finish()
+
                         } else {
                             // If the registering is not successful then show error message.
                             //showErrorSnackBar(task.exception!!.message.toString(), true)

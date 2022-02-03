@@ -1,15 +1,18 @@
 package com.grupo.bigchickenapp.activities
+
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.View
 import android.view.WindowManager
-import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.grupo.bigchickenapp.R
-import com.grupo.bigchickenapp.utils.MSPTextViewBold
-//import kotlinx.android.synthetic.main.activity_login.*
+
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 @Suppress("DEPRECATION")
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity(), View.OnClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-        supportActionBar?.hide()
+        getSupportActionBar()?.hide()
 
 
         window.setFlags(
@@ -26,16 +29,79 @@ class LoginActivity : AppCompatActivity() {
         )
 
 
+        tv_forgot_password.setOnClickListener(this)
+
+        btn_login.setOnClickListener(this)
+
+        tv_register.setOnClickListener(this)
+
+    }
 
 
-        val tvregister = findViewById<MSPTextViewBold>(R.id.tv_register)
+    override fun onClick(v: View?) {
+        if (v != null) {
+            when (v.id) {
 
-        tvregister.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
-            startActivity(intent)
-            //finish()
+                R.id.tv_forgot_password -> {
+                }
+
+                R.id.btn_login -> {
+                    logInRegisteredUser()
+
+                    validateLoginDetails()
+
+                }
+
+                R.id.tv_register -> {
+
+                    val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                    startActivity(intent)
+                }
+            }
         }
-
-
     }
+
+    private fun validateLoginDetails(): Boolean {
+        return when {
+            TextUtils.isEmpty(et_email.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(resources.getString(R.string.err_msg_enter_email), true)
+                false
+            }
+            TextUtils.isEmpty(et_password.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(resources.getString(R.string.err_msg_enter_password), true)
+                false
+            }
+            else -> {
+                //showErrorSnackBar("Los datos son validos.", false)
+                true
+            }
+        }
     }
+    private fun logInRegisteredUser() {
+
+        if (validateLoginDetails()) {
+
+            // Show the progress dialog.
+            showProgressDialog(resources.getString(R.string.please_wait))
+
+            // Get the text from editText and trim the space
+            val email = et_email.text.toString().trim { it <= ' ' }
+            val password = et_password.text.toString().trim { it <= ' ' }
+
+            // Log-In using FirebaseAuth
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+
+                    // Hide the progress dialog
+                    hideProgressDialog()
+
+                    if (task.isSuccessful) {
+
+                        showErrorSnackBar("You are logged in successfully.", false)
+                    } else {
+                        showErrorSnackBar(task.exception!!.message.toString(), true)
+                    }
+                }
+        }
+    }
+}
