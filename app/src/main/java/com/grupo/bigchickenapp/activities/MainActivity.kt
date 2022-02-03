@@ -1,8 +1,8 @@
-package com.grupo.bigchickenapp
+package com.grupo.bigchickenapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.WindowManager
+import com.grupo.bigchickenapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

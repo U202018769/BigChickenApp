@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/00UPC/06Moviles/00APPS/BigChickenApp/app/src/main/res/drawable/button_background.xml" value="0.165625" />
         <entry key="..\:/00UPC/06Moviles/00APPS/BigChickenApp/app/src/main/res/drawable/splashscreen.xml" value="0.2879999900124293" />
-        <entry key="..\:/00UPC/06Moviles/00APPS/BigChickenApp/app/src/main/res/layout/activity_main.xml" value="0.1484375" />
+        <entry key="..\:/00UPC/06Moviles/00APPS/BigChickenApp/app/src/main/res/layout/activity_main.xml" value="0.6545454318464303" />
         <entry key="..\:/00UPC/06Moviles/00APPS/BigChickenApp/app/src/main/res/layout/activity_splash.xml" value="0.28125" />
       </map>
     </option>
