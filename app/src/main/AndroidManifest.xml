@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BigChickenApp">
         <activity
+            android:name=".activities.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.OlvidoContrasena"
+            android:exported="false" />
+        <activity
             android:name=".activities.BaseActivity"
             android:exported="false" />
         <activity
@@ -30,7 +36,7 @@
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme"></activity>
+            android:theme="@style/SplashTheme" />
     </application>
 
 </manifest>
