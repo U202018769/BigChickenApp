@@ -3,10 +3,13 @@ package com.grupo.bigchickenapp.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import com.google.firebase.auth.FirebaseAuth
 import com.grupo.bigchickenapp.R
+import com.grupo.bigchickenapp.firestore.FirestoreClass
+import com.grupo.bigchickenapp.models.User
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -38,6 +41,24 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
 
+    fun userLoggedInSuccess(user: User) {
+
+        // Hide the progress dialog.
+        hideProgressDialog()
+
+        // Print the user details in the log as of now.
+        Log.i("First Name: ", user.firstName)
+        Log.i("Last Name: ", user.lastName)
+        Log.i("Email: ", user.email)
+
+        // Redirect the user to Main Screen after log in.
+        startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+        finish()
+    }
+
+
+
+
     override fun onClick(v: View?) {
         if (v != null) {
             when (v.id) {
@@ -47,7 +68,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                     val intent = Intent(this@LoginActivity, ForgotPasswordActivity::class.java)
                     startActivity(intent)
-
 
                 }
 
@@ -99,12 +119,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 .addOnCompleteListener { task ->
 
                     // Hide the progress dialog
-                    hideProgressDialog()
+                    //hideProgressDialog()
 
                     if (task.isSuccessful) {
 
-                        showErrorSnackBar("You are logged in successfully.", false)
+                        FirestoreClass().getUserDetails(this@LoginActivity)
                     } else {
+                        hideProgressDialog()
                         showErrorSnackBar(task.exception!!.message.toString(), true)
                     }
                 }
