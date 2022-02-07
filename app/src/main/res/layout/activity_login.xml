@@ -10,7 +10,7 @@
     >
 
     <FrameLayout
-        android:id="@+id/fl_header_image"
+        android:id="@+id/fl_header_image2"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/auth_header_image_height"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,10 +44,10 @@
         android:textSize="@dimen/title_textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/fl_header_image" />
+        app:layout_constraintTop_toBottomOf="@id/fl_header_image2" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_email"
+        android:id="@+id/til_URL"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <com.grupo.bigchickenapp.utils.MSPEditText
-            android:id="@+id/et_email"
+            android:id="@+id/et_nombreProducto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -83,7 +83,7 @@
         android:textColorHint="@color/colorSecondaryText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_email">
+        app:layout_constraintTop_toBottomOf="@id/til_URL">
 
         <com.grupo.bigchickenapp.utils.MSPEditText
             android:id="@+id/et_password"
@@ -110,7 +110,7 @@
         app:layout_constraintTop_toBottomOf="@id/til_password" />
 
     <com.grupo.bigchickenapp.utils.MSPButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_crearProducto2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -137,7 +137,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_login">
+        app:layout_constraintTop_toBottomOf="@id/btn_crearProducto2">
 
         <com.grupo.bigchickenapp.utils.MSPTextView
             android:id="@+id/tv_don_t_have_an_account"

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,7 +18,7 @@ import com.grupo.bigchickenapp.models.User
 import com.grupo.bigchickenapp.utils.Constants
 import com.grupo.bigchickenapp.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_register.*
-import kotlinx.android.synthetic.main.activity_register.et_email
+import kotlinx.android.synthetic.main.activity_register.et_nombreProducto
 import kotlinx.android.synthetic.main.activity_register.et_first_name
 import kotlinx.android.synthetic.main.activity_register.et_last_name
 import kotlinx.android.synthetic.main.activity_user_profile.*
@@ -42,7 +43,12 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         // This is used to align the xml view to this class
         setContentView(R.layout.activity_user_profile)
 
+        supportActionBar?.hide()
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         // Create a instance of the User model class.
         /*var userDetails: User = User()*/
 
@@ -59,8 +65,8 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         et_last_name.isEnabled = false
         et_last_name.setText(mUserDetails.lastName)
 
-        et_email.isEnabled = false
-        et_email.setText(mUserDetails.email)
+        et_nombreProducto.isEnabled = false
+        et_nombreProducto.setText(mUserDetails.email)
 
         // Assign the on click event to the user profile photo.
         iv_user_photo.setOnClickListener(this@UserProfileActivity)

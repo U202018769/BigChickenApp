@@ -12,7 +12,7 @@ object Constants {
 
     const val USERS: String = "users"
 
-    const val MYSHOPPAL_PREFERENCES: String = "MyShopPalPrefs"
+    const val BIGCHICKEN_PREFERENCES: String = "BigChickenPrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
 
@@ -25,8 +25,8 @@ object Constants {
 
     // Constant variables for Gender
     // END
-    const val MALE: String = "Male"
-    const val FEMALE: String = "Female"
+    const val MALE: String = "Hombre"
+    const val FEMALE: String = "Mujer"
 
     // Firebase database field names
     const val MOBILE: String = "mobile"

@@ -80,7 +80,7 @@ class RegisterActivity : BaseActivity() {
                 false
             }
 
-            TextUtils.isEmpty(et_email.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_nombreProducto.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_email), true)
                 false
             }
@@ -130,7 +130,7 @@ class RegisterActivity : BaseActivity() {
             // Show the progress dialog.
             showProgressDialog(resources.getString(R.string.please_wait))
 
-            val email: String = et_email.text.toString().trim { it <= ' ' }
+            val email: String = et_nombreProducto.text.toString().trim { it <= ' ' }
             val password: String = et_password.text.toString().trim { it <= ' ' }
 
             // Create an instance and create a register a user with email and password.
@@ -155,7 +155,7 @@ class RegisterActivity : BaseActivity() {
                                 firebaseUser.uid,
                                 et_first_name.text.toString().trim { it <= ' ' },
                                 et_last_name.text.toString().trim { it <= ' ' },
-                                et_email.text.toString().trim { it <= ' ' }
+                                et_nombreProducto.text.toString().trim { it <= ' ' }
                             )
 
 

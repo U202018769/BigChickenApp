@@ -82,7 +82,7 @@ class FirestoreClass {
 
                 val sharedPreferences =
                     activity.getSharedPreferences(
-                        Constants.MYSHOPPAL_PREFERENCES,
+                        Constants.BIGCHICKEN_PREFERENCES,
                         Context.MODE_PRIVATE
                     )
 

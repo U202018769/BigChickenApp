@@ -25,29 +25,22 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
      * This function is auto created by Android when the Activity Class is created.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
-        //This call the parent constructor
+
         super.onCreate(savedInstanceState)
-        // This is used to align the xml view to this class
+
         setContentView(R.layout.activity_login)
         supportActionBar?.hide()
 
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        // This is used to hide the status bar and make the login screen as a full screen activity.
-        // It is deprecated in the API level 30. I will update you with the alternate solution soon.
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
-
-        // Click event assigned to Forgot Password text.
         tv_forgot_password.setOnClickListener(this)
-        // Click event assigned to Login button.
-        btn_login.setOnClickListener(this)
-        // Click event assigned to Register text.
+
+        btn_crearProducto2.setOnClickListener(this)
+
         tv_register.setOnClickListener(this)
     }
 
@@ -65,7 +58,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     startActivity(intent)
                 }
 
-                R.id.btn_login -> {
+                R.id.btn_crearProducto2 -> {
 
                     logInRegisteredUser()
                 }
@@ -84,7 +77,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
      */
     private fun validateLoginDetails(): Boolean {
         return when {
-            TextUtils.isEmpty(et_email.text.toString().trim { it <= ' ' }) -> {
+            TextUtils.isEmpty(et_nombreProducto.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_email), true)
                 false
             }
@@ -109,7 +102,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             showProgressDialog(resources.getString(R.string.please_wait))
 
             // Get the text from editText and trim the space
-            val email = et_email.text.toString().trim { it <= ' ' }
+            val email = et_nombreProducto.text.toString().trim { it <= ' ' }
             val password = et_password.text.toString().trim { it <= ' ' }
 
             // Log-In using FirebaseAuth

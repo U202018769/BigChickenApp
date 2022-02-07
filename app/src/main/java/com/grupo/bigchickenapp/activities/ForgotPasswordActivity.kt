@@ -35,7 +35,7 @@ class ForgotPasswordActivity : BaseActivity() {
         btn_submit.setOnClickListener {
 
             // Get the email id from the input field.
-            val email: String = et_email.text.toString().trim { it <= ' ' }
+            val email: String = et_nombreProducto.text.toString().trim { it <= ' ' }
 
             // Now, If the email entered in blank then show the error message or else continue with the implemented feature.
             if (email.isEmpty()) {
