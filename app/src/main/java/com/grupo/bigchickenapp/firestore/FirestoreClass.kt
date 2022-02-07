@@ -118,7 +118,7 @@ class FirestoreClass {
     }
 
 
-    //
+
     // START
     /**
      * A function to update the user profile data into the database.
@@ -135,8 +135,7 @@ class FirestoreClass {
             .update(userHashMap)
             .addOnSuccessListener {
 
-                //
-                // START
+
                 // Notify the success result.
                 when (activity) {
                     is UserProfileActivity -> {

@@ -25,6 +25,7 @@ class RegisterActivity : BaseActivity() {
 
         setContentView(R.layout.activity_register)
 
+
         supportActionBar?.hide()
 
         window.setFlags(
@@ -40,7 +41,7 @@ class RegisterActivity : BaseActivity() {
             //startActivity(intent)
             //finish()
             onBackPressed()
-       }
+        }
 
         btn_register.setOnClickListener {
 

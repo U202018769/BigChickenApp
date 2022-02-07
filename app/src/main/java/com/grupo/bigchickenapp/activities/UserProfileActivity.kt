@@ -23,14 +23,12 @@ import kotlinx.android.synthetic.main.activity_register.et_last_name
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
 
-
 /**
  * A user profile screen.
  */
 class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
-    //
-    // START
+
     // Instance of User data model class. We will initialize it later on.
     private lateinit var mUserDetails: User
     // END
@@ -45,11 +43,9 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         setContentView(R.layout.activity_user_profile)
 
 
-        //
-        // START
         // Create a instance of the User model class.
         /*var userDetails: User = User()*/
-        // END
+
 
         if (intent.hasExtra(Constants.EXTRA_USER_DETAILS)) {
             // Get the user details from intent as a ParcelableExtra.
@@ -102,8 +98,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
                     if (validateUserProfileDetails()) {
 
-                        //
-                        // START
+
                         val userHashMap = HashMap<String, Any>()
 
                         // Here the field which are not editable needs no update. So, we will update user Mobile Number and Gender for now.
@@ -122,11 +117,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
                         }
 
                         userHashMap[Constants.GENDER] = gender
-                        // END
 
-
-                        //
-                        // START
                         /*showErrorSnackBar("Your details are valid. You can update them.", false)*/
 
                         // Show the progress dialog.
@@ -222,9 +213,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
     private fun validateUserProfileDetails(): Boolean {
         return when {
 
-            // We have kept the user profile picture is optional.
-            // The FirstName, LastName, and Email Id are not editable when they come from the login screen.
-            // The Radio button for Gender always has the default selected value.
+
 
             // Check if the mobile number is not empty as it is mandatory to enter.
             TextUtils.isEmpty(et_mobile_number.text.toString().trim { it <= ' ' }) -> {
@@ -237,8 +226,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    //
-    // START
+
     /**
      * A function to notify the success result and proceed further accordingly after updating the user details.
      */
@@ -258,5 +246,5 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
         startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
         finish()
     }
-    // END
+
 }
