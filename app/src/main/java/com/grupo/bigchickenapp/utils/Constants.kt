@@ -33,10 +33,9 @@ object Constants {
     const val GENDER: String = "gender"
 
 
-    // START
+
     const val USER_PROFILE_IMAGE:String = "User_Profile_Image"
-    // END
-    // END
+
 
 
     fun showImageChooser(activity: Activity) {
